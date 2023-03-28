@@ -9,4 +9,9 @@ export default defineNuxtConfig({
 		plugins: ["@/server/db/index.ts"],
 	},
 
+	routes: {
+		'/': { prerender: true },
+		'/*': { cors: true }
+	}
+
 });

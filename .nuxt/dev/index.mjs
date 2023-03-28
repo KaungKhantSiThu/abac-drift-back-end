@@ -5,7 +5,7 @@ import { join } from 'path';
 import { mkdirSync } from 'fs';
 import { parentPort, threadId } from 'worker_threads';
 import { provider, isWindows } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-back-end/node_modules/std-env/dist/index.mjs';
-import { eventHandler, defineEventHandler, handleCacheHeaders, createEvent, createApp, createRouter, lazyEventHandler, readBody, createError, getQuery } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-back-end/node_modules/h3/dist/index.mjs';
+import { eventHandler, defineEventHandler, handleCacheHeaders, createEvent, setResponseHeaders, getMethod, createApp, createRouter, lazyEventHandler, readBody, createError, getQuery } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-back-end/node_modules/nitropack/node_modules/h3/dist/index.mjs';
 import mongoose from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-back-end/node_modules/mongoose/index.js';
 import Joi from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-back-end/node_modules/joi/lib/index.js';
 import { createRenderer } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-back-end/node_modules/vue-bundle-renderer/dist/runtime.mjs';
@@ -370,6 +370,21 @@ const errorHandler = (async function errorhandler(error, event) {
   event.res.end(html);
 });
 
+const _pspUdK = defineEventHandler((event) => {
+  setResponseHeaders(event, {
+    "Access-Control-Allow-Methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Credentials": "true",
+    "Access-Control-Allow-Headers": "*",
+    "Access-Control-Expose-Headers": "*"
+  });
+  if (getMethod(event) === "OPTIONS") {
+    event.res.statusCode = 204;
+    event.res.statusMessage = "No Content.";
+    return "OK";
+  }
+});
+
 const _lazy_2w2l1c = () => Promise.resolve().then(function () { return index$5; });
 const _lazy_M0JeRe = () => Promise.resolve().then(function () { return create_post$5; });
 const _lazy_xvtSR0 = () => Promise.resolve().then(function () { return _id_$5; });
@@ -387,6 +402,7 @@ const _lazy_GrTkV7 = () => Promise.resolve().then(function () { return _id__dele
 const _lazy_SHEuVB = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
+  { route: '', handler: _pspUdK, lazy: false, middleware: true, method: undefined },
   { route: '/api/users', handler: _lazy_2w2l1c, lazy: true, middleware: false, method: undefined },
   { route: '/api/users/create', handler: _lazy_M0JeRe, lazy: true, middleware: false, method: "post" },
   { route: '/api/users/:id', handler: _lazy_xvtSR0, lazy: true, middleware: false, method: undefined },
