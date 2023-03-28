@@ -21,3 +21,17 @@ Buying and selling second-hand motorcycle platform. The sellers will upload thei
 
 
 <!-- AUTO-GENERATED-CONTENT:END -->
+
+- [Nuxt 3](https://v3.nuxtjs.org)
+- [TailwindCSS](https://tailwindcss.com/)
+- [Headless UI](https://headlessui.com/)
+- [Pinia](https://pinia.vuejs.org/)
+- [VeeValidate V4](https://vee-validate.logaretm.com/v4/)
+- [MongoDB](https://www.mongodb.com/)
+
+## How to start
+
+1. Add mongo uri to `.env` file
+1. Install dependencies with `npm install --force` (Force if you get an error abot pinia)
+1. Run dev with `npm run dev`
+1. Build & deploy if you want to `npm run build`

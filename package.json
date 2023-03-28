@@ -1,0 +1,18 @@
+{
+	"private": true,
+	"scripts": {
+		"build": "nuxt build",
+		"dev": "nuxt dev",
+		"dev:clean": "rm -rf node_modules && rm -rf package-lock.json && npm i --force && nuxt dev",
+		"generate": "nuxt generate",
+		"preview": "nuxt preview",
+		"postinstall": "nuxt prepare"
+	},
+	"devDependencies": {
+		"nuxt": "3.0.0-rc.10"
+	},
+	"dependencies": {
+		"joi": "^17.6.0",
+		"mongoose": "^6.6.1"
+	}
+}
